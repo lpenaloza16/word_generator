@@ -108,6 +108,33 @@ body {
   }
 }
 
+.button-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background: grey;
+  outline: none;
+  padding: 0.5rem 1.8rem;
+  box-shadow: 0 0.3rem rgba(121, 121, 121, 0.65);
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+/*horizonal, vertical*/
+button:active {
+  transform: translate(0, 0.3rem);
+  box-shadow: 00.1rem rgba(255, 255, 255, 0.65);
+}
+
 /*Adding the media query; tablet or smaller*/
 @media screen and (max-width: 1000px) {
   .quote-container {
