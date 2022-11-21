@@ -1,5 +1,5 @@
 // Where we store objects -> array full of objects that are recieved
-// let apiQuotes = [];
+let apiQuotes = [];
 
 // Show New Quote
 
@@ -9,26 +9,26 @@ function getRandomInt(max) {
 
 //Pick a random quote from apiQuotes array
 function newQuote() {
-  const quote = localquotes[Math.floor(Math.random() * apiQuotes.length)];
+  const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
   console.log(quote);
 }
 
-/*async function getQuotes() {
+async function getQuotes() {
   //fetching a source and storing it
-  const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
+  const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json"; //best to use api since it can be updated over time, compared to something that just sits on your local file
   try {
     const response = await fetch(apiUrl); //once {won't exist unless something is recieved} source is received, that is label as our response.
     apiQuotes = await response.json(); //destructs the JSON to Objects; extracted
     newQuote();
-    // console.log(apiQuotes[12]); //reads objects
+    //console.log(apiQuotes[12]); //reads objects
 
     //breaking that json into objects;
   } catch (error) {
     alert(error);
     //handle error
   }
-} */
+}
 
 // On load
 
-//getQuotes(); //perform
+getQuotes(); //perform
