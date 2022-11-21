@@ -1,5 +1,5 @@
 // Where we store objects -> array full of objects that are recieved
-let apiQuotes = [];
+// let apiQuotes = [];
 
 // Show New Quote
 
@@ -7,9 +7,13 @@ function getRandomInt(max) {
   console.log(Math.floor(Math.random() * Math.floor(max)));
 }
 
-function newQuote() {}
+//Pick a random quote from apiQuotes array
+function newQuote() {
+  const quote = localquotes[Math.floor(Math.random() * apiQuotes.length)];
+  console.log(quote);
+}
 
-async function getQuotes() {
+/*async function getQuotes() {
   //fetching a source and storing it
   const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
   try {
@@ -23,8 +27,8 @@ async function getQuotes() {
     alert(error);
     //handle error
   }
-}
+} */
 
 // On load
 
-getQuotes(); //perform
+//getQuotes(); //perform
