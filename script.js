@@ -4,10 +4,23 @@ const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
+const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 
 // Show New Quote
+
+function loading() {
+  loader.hidden = false;
+  quoteContainer.hidden = true;
+}
+
+//Hide Loading
+
+function complete() {
+  loader.hidden = true;
+  quoteContainer.hidden = false;
+}
 
 function getRandomInt(max) {
   console.log(Math.floor(Math.random() * Math.floor(max)));
@@ -15,6 +28,7 @@ function getRandomInt(max) {
 
 //Pick a random quote from apiQuotes array
 function newQuote() {
+  loading();
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
   if (!quote.text) {
@@ -31,10 +45,13 @@ function newQuote() {
     quoteText.classList.remove("long-quote");
   }
 
+  //Set Quote, Hide Loader
   quoteText.textContent = quote.text;
+  complete();
 }
 
 async function getQuotes() {
+  loading();
   //fetching a source and storing it
   const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json"; //best to use api since it can be updated over time, compared to something that just sits on your local file
   try {
@@ -62,3 +79,4 @@ newQuoteBtn.addEventListener("click", newQuote);
 twitterBtn.addEventListener("click", tweetQuote);
 
 getQuotes(); //perform
+// loading();
