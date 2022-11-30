@@ -1,4 +1,10 @@
 // Where we store objects -> array full of objects that are recieved
+const quoteContainer = document.getElementById("quote-container");
+const quoteText = document.getElementById("quote");
+const authorText = document.getElementById("author");
+const twitterBtn = document.getElementById("twitter");
+const newQuoteBtn = document.getElementById("new-quote");
+
 let apiQuotes = [];
 
 // Show New Quote
@@ -10,7 +16,22 @@ function getRandomInt(max) {
 //Pick a random quote from apiQuotes array
 function newQuote() {
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-  console.log(quote);
+
+  if (!quote.text) {
+    authorText.textContent = "Unknown";
+  } else {
+    authorText.textContent = quote.author;
+  }
+
+  //checking quote length for styling
+
+  if (quote.text.length > 120) {
+    quoteText.classList.add("long-quote");
+  } else {
+    quoteText.classList.remove("long-quote");
+  }
+
+  quoteText.textContent = quote.text;
 }
 
 async function getQuotes() {
@@ -29,6 +50,15 @@ async function getQuotes() {
   }
 }
 
+function tweetQuote() {
+  const twittrUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+  window.open(twittrUrl, "_blank");
+}
+
 // On load
+
+//Event listeners
+newQuoteBtn.addEventListener("click", newQuote);
+twitterBtn.addEventListener("click", tweetQuote);
 
 getQuotes(); //perform
