@@ -10,14 +10,14 @@ let apiQuotes = [];
 
 // Show New Quote
 
-function loading() {
+function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
 
 //Hide Loading
 
-function complete() {
+function removeLoadingSpinner() {
   loader.hidden = true;
   quoteContainer.hidden = false;
 }
@@ -47,11 +47,11 @@ function newQuote() {
 
   //Set Quote, Hide Loader
   quoteText.textContent = quote.text;
-  complete();
+  removeLoadingSpinner();
 }
 
 async function getQuotes() {
-  loading();
+  showLoadingSpinner();
   //fetching a source and storing it
   const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json"; //best to use api since it can be updated over time, compared to something that just sits on your local file
   try {
