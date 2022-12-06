@@ -28,7 +28,7 @@ function getRandomInt(max) {
 
 //Pick a random quote from apiQuotes array
 function newQuote() {
-  loading();
+  showLoadingSpinner();
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
   if (!quote.text) {
